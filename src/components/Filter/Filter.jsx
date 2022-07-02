@@ -1,5 +1,6 @@
 import React from 'react';
 import { Label } from './Filter.styled';
+import PropTypes from 'prop-types';
 
 class Filter extends React.Component {
   state = {
@@ -21,3 +22,7 @@ class Filter extends React.Component {
 }
 
 export default Filter;
+
+Filter.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
