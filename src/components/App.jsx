@@ -29,6 +29,14 @@ export class App extends React.Component {
     });
   };
 
+  deleteContact = id => {
+    this.setState(state => {
+      return {
+        contacts: state.contacts.filter(c => c.id !== id),
+      };
+    });
+  };
+
   render() {
     return (
       <div
@@ -47,7 +55,7 @@ export class App extends React.Component {
           <ContactForm onSubmit={this.handleContactFormSubmit} />
           <h3>Contacts</h3>
           <Filter onChange={this.handleFilterChange} />
-          <ContactList state={this.state} />
+          <ContactList state={this.state} onDelete={this.deleteContact} />
         </VertFlexSection>
       </div>
     );
