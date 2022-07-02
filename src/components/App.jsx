@@ -1,19 +1,31 @@
 import React from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
+import Filter from './Filter/Filter';
 import { VertFlexSection } from './App.styled';
 import { nanoid } from 'nanoid';
 
 export class App extends React.Component {
   state = {
-    contacts: [],
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    filter: '',
   };
 
   handleContactFormSubmit = ({ contact }) => {
-    const { name } = contact;
+    const { name, number } = contact;
     this.setState(state => {
-      console.log(contact);
-      return { contacts: [...state.contacts, { id: nanoid(), name }] };
+      return { contacts: [...state.contacts, { id: nanoid(), name, number }] };
+    });
+  };
+
+  handleFilterChange = ({ filter }) => {
+    this.setState(state => {
+      return { filter };
     });
   };
 
@@ -34,7 +46,8 @@ export class App extends React.Component {
           <h2>Phonebook</h2>
           <ContactForm onSubmit={this.handleContactFormSubmit} />
           <h3>Contacts</h3>
-          <ContactList contacts={this.state.contacts} />
+          <Filter onChange={this.handleFilterChange} />
+          <ContactList state={this.state} />
         </VertFlexSection>
       </div>
     );

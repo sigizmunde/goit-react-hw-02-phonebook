@@ -6,7 +6,9 @@ export const VertFlexSection = styled.section`
   gap: var(--min-gap);
   padding: var(--max-gap);
   border-radius: var(--min-gap);
-  max-width: calc(var(--module-width) * 4);
+  max-width: calc(var(--module-width) * 6);
+  height: 50%;
+  min-height: 415px;
   background-color: var(--back-color-1);
   > h2,
   > h3 {

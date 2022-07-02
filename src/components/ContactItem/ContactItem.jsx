@@ -1,9 +1,10 @@
 import { ListItem } from './ContactItem.styled';
 
-function ContactItem({ name }) {
+function ContactItem({ name, number }) {
   return (
     <ListItem>
-      <span>{name}</span>
+      <span>{name}:</span>
+      <span>{number}</span>
     </ListItem>
   );
 }
