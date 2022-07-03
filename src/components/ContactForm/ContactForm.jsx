@@ -41,7 +41,7 @@ class ContactForm extends React.Component {
           />
         </label>
         <label>
-          {'Name '}
+          {'Phone '}
           <input
             type="tel"
             name="number"
