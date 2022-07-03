@@ -1,5 +1,6 @@
 import React from 'react';
-import ContactForm from './ContactForm/ContactForm';
+// import ContactForm from './ContactForm/ContactForm';
+import ContactFormikForm from './ContactFormikForm/ContactFormikForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import { VertFlexSection } from './App.styled';
@@ -61,7 +62,7 @@ export class App extends React.Component {
       >
         <VertFlexSection>
           <h2>Phonebook</h2>
-          <ContactForm onSubmit={this.handleContactFormSubmit} />
+          <ContactFormikForm onSubmit={this.handleContactFormSubmit} />
           <h3>Contacts</h3>
           <Filter onChange={this.handleFilterChange} />
           <ContactList state={this.state} onDelete={this.deleteContact} />
