@@ -24,9 +24,7 @@ export class App extends React.Component {
   };
 
   handleFilterChange = ({ filter }) => {
-    this.setState(state => {
-      return { filter };
-    });
+    this.setState({ filter });
   };
 
   deleteContact = id => {
