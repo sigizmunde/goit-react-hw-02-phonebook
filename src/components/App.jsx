@@ -3,7 +3,7 @@ import React from 'react';
 import ContactFormikForm from './ContactFormikForm/ContactFormikForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
-import { VertFlexSection } from './App.styled';
+import { VertFlexSection, OneLine, SmallCaption } from './App.styled';
 import { nanoid } from 'nanoid';
 
 export class App extends React.Component {
@@ -31,7 +31,7 @@ export class App extends React.Component {
       onSuccess();
       // function to perform in ContactForm
     } else {
-      alert(name + ' is alreadey in contacts');
+      alert(name + ' is already in contacts');
     }
   };
 
@@ -61,7 +61,10 @@ export class App extends React.Component {
         }}
       >
         <VertFlexSection>
-          <h2>Phonebook</h2>
+          <OneLine>
+            <h2>Phonebook</h2>
+            <SmallCaption>v2 Formik</SmallCaption>
+          </OneLine>
           <ContactFormikForm onSubmit={this.handleContactFormSubmit} />
           <h3>Contacts</h3>
           <Filter onChange={this.handleFilterChange} />

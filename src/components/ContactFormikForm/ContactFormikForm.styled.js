@@ -11,3 +11,9 @@ export const Form = styled(FormikForm)`
     width: 100%;
   }
 `;
+
+export const ErrorText = styled.p`
+  display: block;
+  color: var(--accent-color);
+  font-size: 10px;
+`;
