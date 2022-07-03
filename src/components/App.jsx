@@ -16,11 +16,22 @@ export class App extends React.Component {
     filter: '',
   };
 
-  handleContactFormSubmit = ({ contact }) => {
+  handleContactFormSubmit = ({ contact, onSuccess }) => {
     const { name, number } = contact;
-    this.setState(state => {
-      return { contacts: [...state.contacts, { id: nanoid(), name, number }] };
-    });
+    const successCondition = !this.state.contacts.filter(
+      c => c.name.toLowerCase() === name.toLowerCase()
+    ).length;
+    if (successCondition) {
+      this.setState(state => {
+        return {
+          contacts: [...state.contacts, { id: nanoid(), name, number }],
+        };
+      });
+      onSuccess();
+      // function to perform in ContactForm
+    } else {
+      alert(name + ' is alreadey in contacts');
+    }
   };
 
   handleFilterChange = ({ filter }) => {

@@ -21,8 +21,8 @@ class ContactForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit({ contact: this.state });
-    this.clearForm();
+    this.props.onSubmit({ contact: this.state, onSuccess: this.clearForm });
+    // form clears only on success
   };
 
   render() {
