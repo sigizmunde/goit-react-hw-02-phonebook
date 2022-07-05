@@ -34,8 +34,13 @@ export class App extends React.Component {
     }
   };
 
-  handleFilterChange = ({ filter }) => {
-    this.setState({ filter });
+  filterContacts = () =>
+    this.state.contacts.filter(c =>
+      c.name.toLowerCase().includes(this.state.filter)
+    );
+
+  handleFilterChange = e => {
+    this.setState({ filter: e.target.value.toLowerCase() });
   };
 
   deleteContact = id => {
@@ -67,7 +72,10 @@ export class App extends React.Component {
           <ContactFormikForm onSubmit={this.handleContactFormSubmit} />
           <h3>Contacts</h3>
           <Filter onChange={this.handleFilterChange} />
-          <ContactList state={this.state} onDelete={this.deleteContact} />
+          <ContactList
+            contacts={this.filterContacts()}
+            onDelete={this.deleteContact}
+          />
         </VertFlexSection>
       </div>
     );

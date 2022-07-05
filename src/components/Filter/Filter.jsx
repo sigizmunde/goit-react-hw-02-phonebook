@@ -2,23 +2,17 @@ import React from 'react';
 import { Label } from './Filter.styled';
 import PropTypes from 'prop-types';
 
-class Filter extends React.Component {
-  state = {
-    filter: '',
-  };
+function Filter({ onChange: onFilterChange }) {
+  // onFilterChange = e => {
+  //   this.props.onChange({ filter: e.target.value.toLowerCase() });
+  // };
 
-  onFilterChange = e => {
-    this.props.onChange({ filter: e.target.value.toLowerCase() });
-  };
-
-  render() {
-    return (
-      <Label>
-        Find contacts by name
-        <input onChange={this.onFilterChange} />
-      </Label>
-    );
-  }
+  return (
+    <Label>
+      Find contacts by name
+      <input onChange={onFilterChange} />
+    </Label>
+  );
 }
 
 export default Filter;
