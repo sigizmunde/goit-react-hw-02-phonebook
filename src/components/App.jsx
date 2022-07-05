@@ -1,5 +1,4 @@
 import React from 'react';
-// import ContactForm from './ContactForm/ContactForm';
 import ContactFormikForm from './ContactFormikForm/ContactFormikForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
