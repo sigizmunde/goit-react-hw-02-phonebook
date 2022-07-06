@@ -1,8 +1,8 @@
 import React from 'react';
-import ContactFormikForm from './ContactFormikForm/ContactFormikForm';
+import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
-import { VertFlexSection, OneLine, SmallCaption } from './App.styled';
+import { VertFlexSection, OneLine } from './App.styled';
 import { nanoid } from 'nanoid';
 
 export class App extends React.Component {
@@ -16,22 +16,14 @@ export class App extends React.Component {
     filter: '',
   };
 
-  handleContactFormSubmit = ({ contact, onSuccess }) => {
+  handleContactFormSubmit = ({ contact }) => {
     const { name, number } = contact;
-    const successCondition = !this.state.contacts.filter(
-      c => c.name.toLowerCase() === name.toLowerCase()
-    ).length;
-    if (successCondition) {
-      this.setState(state => {
-        return {
-          contacts: [...state.contacts, { id: nanoid(), name, number }],
-        };
-      });
-      onSuccess();
-      // function to perform in ContactForm
-    } else {
-      alert(name + ' is already in contacts');
-    }
+
+    this.setState(state => {
+      return {
+        contacts: [...state.contacts, { id: nanoid(), name, number }],
+      };
+    });
   };
 
   filterContacts = () =>
@@ -52,6 +44,8 @@ export class App extends React.Component {
   };
 
   render() {
+    const nameList = this.state.contacts.map(({ name }) => name);
+
     return (
       <div
         style={{
@@ -67,9 +61,11 @@ export class App extends React.Component {
         <VertFlexSection>
           <OneLine>
             <h2>Phonebook</h2>
-            <SmallCaption>v2 Formik</SmallCaption>
           </OneLine>
-          <ContactFormikForm onSubmit={this.handleContactFormSubmit} />
+          <ContactForm
+            onSubmit={this.handleContactFormSubmit}
+            nameList={nameList}
+          />
           <h3>Contacts</h3>
           <Filter onChange={this.handleFilterChange} />
           <ContactList
